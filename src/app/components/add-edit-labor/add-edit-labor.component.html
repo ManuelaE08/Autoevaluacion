@@ -1,0 +1,24 @@
+<div class="row mb-3 mt-10">
+    <div class="col-lg4">
+        <div class="card bg-secondary mb-3" style="max-width: 20rem;">
+            <div class="card-header text-center">{{operacion}} Labor</div>
+            <div class="card-body">
+                <form [formGroup]="formLabor" (ngSubmit)="addLabor()">
+                    <input formControlName="tipLabId" type="number" class="form-control" placeholder="Ingrese ID Tipo Labor">
+                    <input formControlName="nombreLab" type="text" class="form-control" placeholder="Ingrese Nombre Labor">
+                    <input formControlName="horasLab" type="number" class="form-control" placeholder="Ingrese Cantidad de Horas">
+                    <div class="row mt-3 text-center">
+                        <div class="col">
+                            <button [disabled]="formLabor.invalid" type="submit" class="btn btn-secondary">Aceptar</button>
+                        </div>
+                        <div class="col">
+                            <button routerLink="/labor" type="button" class="btn btn-secondary">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
