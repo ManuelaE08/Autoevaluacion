@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Raleway, sans-serif;
+}
+
+
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(90deg, #1140d7, #88a1f1);
+}
+
+.screen {
+  position: relative;
+  height: 600px;
+  width: 80vw;
+  max-width: 360px;
+  box-shadow: 0px 0px 24px #5C5696;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.university-logo {
+  width: 100%;
+  max-width: 200px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.screen__content {
+  z-index: 1;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  clip-path: inset(0 0 0 0);
+  background: url('https://images.pexels.com/photos/281260/pexels-photo-281260.jpeg?cs=srgb&dl=pexels-francesco-ungaro-281260.jpg&fm=jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.screen__background__shape {
+  transform: rotate(45deg);
+  position: absolute;
+}
+
+.screen__background__shape1 {
+  height: 520px;
+  width: 520px;
+  background: #D6E7F9;
+  top: -50px;
+  right: 120px;
+  border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+  height: 220px;
+  width: 220px;
+  background: #A4C3E1;
+  top: -172px;
+  right: 0;
+  border-radius: 32px;
+}
+
+.screen__background__shape3 {
+  height: 540px;
+  width: 190px;
+  background: linear-gradient(270deg, #789AB5, #A0B8CE);
+  top: -24px;
+  right: 0;
+  border-radius: 32px;
+}
+
+.screen__background__shape4 {
+  height: 400px;
+  width: 200px;
+  background: #AFCAE8;
+  top: 420px;
+  right: 50px;
+  border-radius: 60px;
+}
+
+.login {
+  width: 100%;
+  max-width: 320px;
+  padding: 30px;
+  padding-top: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #888888;
+}
+
+.login__field {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.login__icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #3D4F6F;
+}
+
+.login__input {
+  border: none;
+  border-bottom: 2px solid #7387A7;
+  background: none;
+  padding: 10px;
+  padding-left: 24px;
+  font-weight: 700;
+  width: 100%;
+  transition: .2s;
+}
+
+  .login__input:active,
+  .login__input:focus,
+  .login__input:hover {
+    outline: none;
+    border-bottom-color: #556D8D;
+  }
+
+.login__submit {
+  background: #E2EEF9;
+  font-size: 14px;
+  margin-top: 30px;
+  padding: 16px 20px;
+  border-radius: 26px;
+  border: 1px solid #A3C5E0;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #3D4F6F;
+  box-shadow: 0px 2px 2px #5C5696;
+  cursor: pointer;
+  transition: .2s;
+}
+
+  .login__submit:active,
+  .login__submit:focus,
+  .login__submit:hover {
+    border-color: #556D8D;
+    outline: none;
+  }
+
+.button__icon {
+  font-size: 24px;
+  margin-left: auto;
+  color: #3D4F6F;
+}
+
+.error-message {
+  color: #FF6B6B;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .screen {
+    width: 90vw;
+  }
+}
