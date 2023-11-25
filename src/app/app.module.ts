@@ -14,6 +14,9 @@ import { ItemRemoveComponent } from './item-remove/item-remove.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListLaborComponent } from './components/list-labor/list-labor.component';
 import { AddEditLaborComponent } from './components/add-edit-labor/add-edit-labor.component';
+import { ListAutoevaluacionComponent } from './components/list-autoevaluacion/list-autoevaluacion.component';
+import { ListItemComponent } from './components/list-item/list-item.component';
+import { AddItemUsuarioComponent } from './components/add-item-usuario/add-item-usuario.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { AddEditLaborComponent } from './components/add-edit-labor/add-edit-labo
     NavbarComponent,
     ListLaborComponent,
     AddEditLaborComponent,
+    ListAutoevaluacionComponent,
+    ListItemComponent,
+    AddItemUsuarioComponent,
   ],
   imports: [
     BrowserModule,

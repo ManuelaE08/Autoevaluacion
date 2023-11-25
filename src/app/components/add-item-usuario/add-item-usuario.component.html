@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+<p>AGREGAR NUEVA LABOR A USUARIO</p>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Tipo Labor</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cantidad Horas</th>
+        <th scope=""></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor=" let labor of listLabores" class="table-active">
+        <td>{{labor.id}}</td>
+        <td>{{labor.idTipoLabor}}</td>
+        <td>{{labor.nombre}}</td>
+        <td>{{labor.horas}}</td>
+    </tr>
+    </tbody>
+</table>
+
+<button routerLink="/autoevaluacion/item/{{this.id_usuario}}" class="btn btn-secondary">Cancelar</button>
