@@ -4,7 +4,14 @@
             <div class="card-header text-center">{{operacion}} Labor</div>
             <div class="card-body">
                 <form [formGroup]="formLabor" (ngSubmit)="addLabor()">
-                    <input formControlName="tipLabId" type="number" class="form-control" placeholder="Ingrese ID Tipo Labor">
+                    <<label for="IDTipoLabor">Tipo Labor:</label>
+                    <select formControlName="tipLabId" id="tipLabId" class="form-control" placeholder="Escoja el  tipo de labor">
+                        <option *ngFor="let tipo of tipoLabor">{{tipo.id}}</option>
+                    </select>
+                    <span *ngIf="formLabor.get('tipoLabor')?.hasError('required') && formLabor.get('tipoLabor')?.touched">
+                         El campo ID tipo labor es <strong>requerido</strong>
+                    </span>
+
                     <input formControlName="nombreLab" type="text" class="form-control" placeholder="Ingrese Nombre Labor">
                     <input formControlName="horasLab" type="number" class="form-control" placeholder="Ingrese Cantidad de Horas">
                     <div class="row mt-3 text-center">
