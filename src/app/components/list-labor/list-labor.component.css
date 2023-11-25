@@ -1,17 +1,4 @@
-.title{
-    margin-top: 20px;
-    margin-block: 20px;
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(74, 141, 241);
-    text-align: center;
-}
-.title h4{
-    background-color: rgb(74, 141, 241);
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.title button{
+.container-fluid button{
     background-color: rgb(74, 141, 241);
     color: white;
 }

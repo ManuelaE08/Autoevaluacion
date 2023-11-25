@@ -1,3 +1,12 @@
-.btn-group-vertical button{
+.container-fluid{
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container i{
+    font-size: 100px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.nav-item {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
 }
