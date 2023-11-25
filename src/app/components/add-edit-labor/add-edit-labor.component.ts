@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Labor } from 'src/app/interfaces/labor';
 import { LaborService } from 'src/app/services/labor.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TipoLabor } from 'src/app/interfaces/tipoLabor';
 
 @Component({
   selector: 'app-add-edit-labor',
@@ -10,6 +11,47 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./add-edit-labor.component.css']
 })
 export class AddEditLaborComponent implements OnInit{
+  tipoLabor: TipoLabor[] = [{
+    id: 1,
+    codigo: 'D',
+    descripcion: 'Docencia'
+  },{
+    id: 2,
+    codigo: 'TD',
+    descripcion: 'Trabajos Docencia'
+  },{
+    id: 3,
+    codigo: 'PI',
+    descripcion: 'Proyectos Investigación'
+  },{
+    id: 4,
+    codigo: 'TI',
+    descripcion: 'Trabajos Investigación'
+  },{
+    id: 5,
+    codigo: 'AD',
+    descripcion: 'Administración'
+  },{
+    id: 6,
+    codigo: 'AS',
+    descripcion: 'Asesoría'
+  },{
+    id: 7,
+    codigo: 'S',
+    descripcion: 'Servicios'
+  },{
+    id: 8,
+    codigo: 'E',
+    descripcion: 'Extensión'
+  },{
+    id: 9,
+    codigo: 'C',
+    descripcion: 'Capacitación'
+  },{
+    id: 10,
+    codigo: 'OS',
+    descripcion: 'Otros Servicios'
+  }];
   formLabor: FormGroup;
   id:number;
   operacion: string = 'Agregar ';
@@ -49,7 +91,7 @@ export class AddEditLaborComponent implements OnInit{
     console.log(this.formLabor.value.tipLabId);
     
     const labor: Labor = {
-      idTipoLabor: this.formLabor.value.tipLabId,
+      idTipoLabor: this.formLabor.value.tipLabId ,
       nombre: this.formLabor.value.nombreLab,
       horas: this.formLabor.value.horasLab
     }
