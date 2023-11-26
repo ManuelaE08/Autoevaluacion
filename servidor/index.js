@@ -45,6 +45,14 @@ app.use('/labor', laborController(pool));
 app.use('/autoevaluacion/:evid/evidencias', evidenciaController);
 
 
+// Rutas para users
+app.use('/user', authMiddleware.verifyToken, userController(pool));
+
+//Rutas para roles
+app.use('/rol', authMiddleware.verifyToken, rolController(pool));
+
+//Rutas para usu-roles
+app.use('/usu-rol', authMiddleware.verifyToken, usuRolController(pool));
 // Mensaje error general
 app.use((err, req, res, next) => {
   console.error(err.stack);
