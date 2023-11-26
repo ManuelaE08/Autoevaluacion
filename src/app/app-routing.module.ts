@@ -12,6 +12,7 @@ import { ListAutoevaluacionComponent } from './components/list-autoevaluacion/li
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { AddItemUsuarioComponent } from './components/add-item-usuario/add-item-usuario.component';
 import { ListDocentesComponent } from './components/list-docentes/list-docentes.component';
+import { AddEditUsuarioComponent } from './components/add-edit-usuario/add-edit-usuario.component';
 
 
 const routes: Routes = [
