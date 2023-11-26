@@ -6,8 +6,12 @@ const router = express.Router();
 const secretKey = process.env.SECRET_KEY || 'defaultSecret';
 const authMiddleware = new AuthMiddleware(secretKey);
 
-module.exports = (pool) => {
+function handleErrors(res, error) {
+  console.error('Error:', error.message);
+  return res.status(500).json({ error: 'Internal Server Error' });
+}
 
+module.exports = (pool) => {
   // Obtener items según evaluación actual del usuario
   router.get('/:id_usuario', authMiddleware.verifyToken, (req, res) => {
     const { id_usuario } = req.params;
@@ -15,32 +19,32 @@ module.exports = (pool) => {
 
     const query = `
       SELECT
-          IE.IEVA_ID,
-          L.LAB_NOMBRE,
-          TL.TL_DESCRIPCION AS TIPO_LABOR,
-          L.LAB_HORAS,
-          IE.IEVA_DESCRIPCION AS DESCRIPCION,
-          IE.IEVA_ACTO,
-          IE.IEVA_ESTADO,
-          IE.IEVA_PUNTAJE,
-          EA.EVI_CONTENIDO AS RESULTADOS
+        IE.IEVA_ID,
+        L.LAB_NOMBRE,
+        TL.TL_DESCRIPCION AS TIPO_LABOR,
+        L.LAB_HORAS,
+        IE.IEVA_DESCRIPCION AS DESCRIPCION,
+        IE.IEVA_ACTO,
+        IE.IEVA_ESTADO,
+        IE.IEVA_PUNTAJE,
+        EA.EVI_TIPO,
+        COALESCE(EA.EVI_CONTENIDO, 'valor_predeterminado') AS RESULTADOS
       FROM ITEM_EVALUACION IE
       JOIN EVALUACION E ON IE.EVA_ID = E.EVA_ID
       JOIN LABOR L ON IE.LAB_ID = L.LAB_ID
       JOIN TIPOLABOR TL ON L.TL_ID = TL.TL_ID
       LEFT JOIN EVIDENCIA_ACTIVIDAD EA ON IE.IEVA_ID = EA.IEVA_ID
       WHERE E.USR_IDENTIFICACION = ? AND E.EVA_ID = (
-          SELECT EVA_ID
-          FROM EVALUACION
-          WHERE USR_IDENTIFICACION = ?
-          ORDER BY PER_ID DESC
-          LIMIT 1
+        SELECT EVA_ID
+        FROM EVALUACION
+        WHERE USR_IDENTIFICACION = ?
+        ORDER BY PER_ID DESC
+        LIMIT 1
       );
     `;
 
     pool.query(query, [id_usuario, id_usuario], (error, result) => {
       if (error) {
-        console.error('Error en la consulta:', error.message);
         return handleErrors(res, error);
       }
 

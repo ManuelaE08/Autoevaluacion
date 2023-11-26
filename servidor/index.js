@@ -46,7 +46,7 @@ app.use('/tipo-labor', tipoLaborController(pool));
 app.use('/labor', laborController(pool));
 
 // Rutas para evidencias
-app.use('/autoevaluacion/:evid/evidencias', evidenciaController);
+app.use('/autoevaluacion/:id', evidenciaController(pool));
 
 
 // Rutas para users

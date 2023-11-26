@@ -106,7 +106,7 @@ export class ItemService {
   }
 
   // Manejo de evidencias
-  subirEvidencia(ieva_id: number, archivo: File): Observable<any> {
+  subirEvidencia(usr_identificacion: number, ieva_id: number, archivo: File): Observable<any> {
     const token = localStorage.getItem('token');
 
     if (token) {
@@ -115,7 +115,7 @@ export class ItemService {
 
       const headers = new HttpHeaders({ Authorization: token });
 
-      return this.http.post(`${API_URL}/${ieva_id}/evidencias/subir`, formData, { headers }).pipe(
+      return this.http.post(`${API_URL}/${usr_identificacion}/${ieva_id}/evidencias/subir`, formData, { headers }).pipe(
         catchError((error: any) => {
           console.error('Error en la solicitud para subir una evidencia:', error);
           return throwError(error);
@@ -127,13 +127,14 @@ export class ItemService {
     }
   }
 
-  descargarEvidencia(ieva_id: number): Observable<any> {
+  descargarEvidencia(usr_identificacion: number, ieva_id: number): Observable<Blob> {
     const token = localStorage.getItem('token');
-
     if (token) {
-      const headers = new HttpHeaders({ Authorization: token, responseType: 'blob' as 'json' });
-
-      return this.http.get(`${API_URL}/${ieva_id}/evidencias/descargar`, { headers }).pipe(
+      const headers = new HttpHeaders({ Authorization: token });
+      return this.http.get(`${API_URL}/${usr_identificacion}/evidencias/descargar/${ieva_id}`, {
+        headers,
+        responseType: 'blob',
+      }).pipe(
         catchError((error: any) => {
           console.error('Error en la solicitud para descargar una evidencia:', error);
           return throwError(error);
@@ -144,5 +145,6 @@ export class ItemService {
       return throwError('Token not provided!');
     }
   }
+
 
 }
