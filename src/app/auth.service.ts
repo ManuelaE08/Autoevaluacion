@@ -19,7 +19,7 @@ export class AuthService {
           console.log('Token recibido:', response.token);
           localStorage.setItem('token', response.token);
           localStorage.setItem('rol', response.rol);
-          this.router.navigate(['/items/add']);
+          this.router.navigate(['/inicio']);
         },
         (error) => console.error('Error en la solicitud de inicio de sesión:', error)
       )

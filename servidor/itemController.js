@@ -7,40 +7,52 @@ const secretKey = process.env.SECRET_KEY || 'defaultSecret';
 const authMiddleware = new AuthMiddleware(secretKey);
 
 module.exports = (pool) => {
-  // Obtener items según evaluación
-  router.get('/:eva_id', authMiddleware.verifyToken, (req, res) => {
-    const { eva_id } = req.params;
-    console.log(`Solicitud para obtener items de la evaluación ID ${eva_id}`);
-    if (req.user && req.user.rol !== 'guest') {
-    } else {
-      res.status(403).json({ message: 'Forbidden' });
-    }
-  });
 
-  // Obtener un solo ítem por ID
-  router.get('/detalle/:ieva_id', authMiddleware.verifyToken, (req, res) => {
-    const { ieva_id } = req.params;
-    console.log(`Solicitud para obtener detalles del ítem ID ${ieva_id}`);
-    const query = 'SELECT * FROM item_evaluacion WHERE ieva_id = ?';
+  // Obtener items según evaluación actual del usuario
+  router.get('/:id_usuario', authMiddleware.verifyToken, (req, res) => {
+    const { id_usuario } = req.params;
+    console.log(`Solicitud para obtener items de autoevaluación del usuario ID ${id_usuario}`);
 
-    pool.query(query, [ieva_id], (error, result) => {
+    const query = `
+      SELECT
+          IE.IEVA_ID,
+          L.LAB_NOMBRE,
+          TL.TL_DESCRIPCION AS TIPO_LABOR,
+          L.LAB_HORAS,
+          IE.IEVA_DESCRIPCION AS DESCRIPCION,
+          IE.IEVA_ACTO,
+          IE.IEVA_ESTADO,
+          IE.IEVA_PUNTAJE,
+          EA.EVI_CONTENIDO AS RESULTADOS
+      FROM ITEM_EVALUACION IE
+      JOIN EVALUACION E ON IE.EVA_ID = E.EVA_ID
+      JOIN LABOR L ON IE.LAB_ID = L.LAB_ID
+      JOIN TIPOLABOR TL ON L.TL_ID = TL.TL_ID
+      LEFT JOIN EVIDENCIA_ACTIVIDAD EA ON IE.IEVA_ID = EA.IEVA_ID
+      WHERE E.USR_IDENTIFICACION = ? AND E.EVA_ID = (
+          SELECT EVA_ID
+          FROM EVALUACION
+          WHERE USR_IDENTIFICACION = ?
+          ORDER BY PER_ID DESC
+          LIMIT 1
+      );
+    `;
+
+    pool.query(query, [id_usuario, id_usuario], (error, result) => {
       if (error) {
         console.error('Error en la consulta:', error.message);
         return handleErrors(res, error);
       }
 
-      if (result.length > 0) {
-        console.log('Detalles del ítem encontrados:', result[0]);
-        res.json(ItemEvaluacion.fromDBRow(result[0]));
-      } else {
-        console.log('Ítem no encontrado');
-        res.json({ message: 'Item not found' });
-      }
+      console.log('Items de autoevaluación encontrados:', result);
+      res.json(result);
     });
   });
 
+
+
   // Agregar item
-  router.post('/add', authMiddleware.verifyToken, authMiddleware.checkRole(['decano']), (req, res) => {
+  router.post('/:id_usuario/add', authMiddleware.verifyToken, authMiddleware.checkRole(['decano']), (req, res) => {
 
     const nuevoItem = new ItemEvaluacion(
       null,
