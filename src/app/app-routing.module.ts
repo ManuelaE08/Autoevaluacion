@@ -11,11 +11,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListAutoevaluacionComponent } from './components/list-autoevaluacion/list-autoevaluacion.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { AddItemUsuarioComponent } from './components/add-item-usuario/add-item-usuario.component';
+import { ListDocentesComponent } from './components/list-docentes/list-docentes.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'inicio', component: NavbarComponent},
   { path: 'login', component: LoginComponent },
+   { path: 'users', component: ListDocentesComponent },
+  { path: 'users/add', component: AddEditUsuarioComponent },
+  { path: 'users/edit/:id', component: AddEditUsuarioComponent},
   { path: 'labor', component: ListLaborComponent},
   { path: 'labor/add', component: AddEditLaborComponent},
   { path: 'labor/edit/:id', component: AddEditLaborComponent},
