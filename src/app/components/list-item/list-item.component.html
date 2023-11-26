@@ -1,4 +1,64 @@
 <app-navbar></app-navbar>
-<p>list-item works!</p>
-<h4>mostrar la lista de items</h4>
-<button routerLink="/autoevaluacion/item/add/{{this.id_usuario}}" type="button" class="btn btn-primary btn-sm ms-2">agregar labor a docente</button>
+<h4>Lista de Items de Autoevaluación</h4>
+
+<button routerLink="/autoevaluacion/item/add/{{this.id_usuario}}" type="button" class="btn btn-primary btn-sm ms-2">
+  Agregar labor a docente
+</button>
+
+<!-- Mostrar la lista de items -->
+<div *ngIf="items && items.length > 0">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Número</th>
+        <th>Nombre de Labor</th>
+        <th>Tipo de Labor</th>
+        <th>Horas</th>
+        <th>Descripción</th>
+        <th>Acto</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Fin</th>
+        <th>Estado</th>
+        <th>Puntaje</th>
+        <th>Resultados</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ item.LAB_NOMBRE }}</td>
+        <td>{{ item.TIPO_LABOR }}</td>
+        <td>{{ item.LAB_HORAS }}</td>
+        <td>{{ item.DESCRIPCION }}</td>
+        <td>{{ item.IEVA_ACTO }}</td>
+        <td>{{ item.IEVA_FECHA_INICIO | date }}</td>
+        <td>{{ item.IEVA_FECHA_FIN | date }}</td>
+        <td>{{ item.IEVA_ESTADO }}</td>
+        <td class="text-center">{{ item.IEVA_PUNTAJE }}</td>
+        <td>
+          <!-- logica para evidencias -->
+          <button type="button" class="btn btn-secondary btn-sm" (click)="descargarEvidencia(item.IEVA_ID, item.EVI_TIPO, item.EVI_CONTENIDO)">
+            Descargar/Mostrar Evidencia
+          </button>
+          <input type="file" (change)="subirEvidencia(item.IEVA_ID, $event)">
+        </td>
+        <td>
+          <button routerLink="/autoevaluacion/{{this.id_usuario}}/item/edit/{{item.IEVA_ID}}" type="button" class="btn btn-warning btn-sm ms-2">
+            Editar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button routerLink="/autoevaluacion/{{this.id_usuario}}/item/add" type="button" class="btn btn-success btn-sm ms-2">
+    Agregar Item
+  </button>
+
+</div>
+
+<!-- Mensaje si no hay items -->
+<div *ngIf="items && items.length === 0">
+  No hay items de autoevaluación disponibles.
+</div>

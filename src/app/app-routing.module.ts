@@ -16,17 +16,13 @@ import { AddItemUsuarioComponent } from './components/add-item-usuario/add-item-
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'inicio', component: NavbarComponent},
-  { path: 'items/add', component: ItemAddComponent },
-  { path: 'items/edit/:id', component: ItemEditComponent },
-  { path: 'items/remove/:id', component: ItemRemoveComponent },
-  { path: 'items/detalle/:eva_id', component: ItemListComponent },
   { path: 'login', component: LoginComponent },
   { path: 'labor', component: ListLaborComponent},
   { path: 'labor/add', component: AddEditLaborComponent},
   { path: 'labor/edit/:id', component: AddEditLaborComponent},
   { path: 'autoevaluacion', component: ListAutoevaluacionComponent},
-  { path: 'autoevaluacion/item/:id', component: ListItemComponent},
-  { path: 'autoevaluacion/item/add/:id', component: AddItemUsuarioComponent},
+  { path: 'autoevaluacion/:uid', component: ListItemComponent},
+  { path: 'autoevaluacion/:uid/item/add', component: AddItemUsuarioComponent},
   { path: '**', redirectTo: '/items' },
 ];
 

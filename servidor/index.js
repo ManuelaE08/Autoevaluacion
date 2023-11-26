@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const itemController = require('./itemController');
 const authController = require('./authController');
+const evidenciaController = require('./evidenciaController');
 //Tipo Labo y labor
 const tipoLaborController = require('./tipoLaborController');
 const laborController = require('./laborController');
@@ -29,16 +30,20 @@ app.get('/', (req, res) => {
 });
 
 // Rutas para items
-app.use('/items', itemController(pool));
+app.use('/autoevaluacion', itemController(pool));
 
 // Ruta para el inicio de sesión
 app.use('/auth', authController);
 
-//ruta para tipo labor
+// Ruta para tipo labor
 app.use('/tipo-labor', tipoLaborController(pool));
 
-//ruta para labor
+// Ruta para labor
 app.use('/labor', laborController(pool));
+
+// Rutas para evidencias
+app.use('/autoevaluacion/:evid/evidencias', evidenciaController);
+
 
 // Mensaje error general
 app.use((err, req, res, next) => {
