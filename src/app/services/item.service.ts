@@ -115,7 +115,7 @@ export class ItemService {
 
       const headers = new HttpHeaders({ Authorization: token });
 
-      return this.http.post(`${API_URL}/${usr_identificacion}/${ieva_id}/evidencias/subir`, formData, { headers }).pipe(
+      return this.http.post(`${API_URL}/${usr_identificacion}/evidencias/subir/${ieva_id}`, formData, { headers }).pipe(
         catchError((error: any) => {
           console.error('Error en la solicitud para subir una evidencia:', error);
           return throwError(error);

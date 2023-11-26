@@ -28,19 +28,36 @@ const handleErrors = (res, error) => {
 };
 
 module.exports = (pool) => {
-  router.post('/:usr_identificacion/:ieva_id/subir', authMiddleware.verifyToken, configureMulter().single('archivo'), (req, res) => {
+  router.post('/:usr_identificacion/subir/:ieva_id', authMiddleware.verifyToken, configureMulter().single('archivo'), (req, res) => {
     const { usr_identificacion, ieva_id } = req.params;
     const archivo = req.file;
+    const esBinario = req.file.mimetype.startsWith('image/') || req.file.mimetype.startsWith('video/') || req.file.mimetype.startsWith('audio/') || req.file.mimetype === 'application/pdf';
 
-    const query = 'INSERT INTO EVIDENCIA_ACTIVIDAD (IEVA_ID, EVI_TIPO, EVI_CONTENIDO) VALUES (?, 1, ?)';
-    pool.query(query, [ieva_id, archivo.filename], (error) => {
-      if (error) {
-        return handleErrors(res, error);
+    // Verificar si ieva_id existe en la tabla item_evaluacion
+    const checkQuery = 'SELECT COUNT(*) AS count FROM item_evaluacion WHERE IEVA_ID = ?';
+    pool.query(checkQuery, [ieva_id], (checkError, checkResults) => {
+      if (checkError) {
+        return handleErrors(res, checkError);
       }
 
-      res.json({ message: 'Archivo subido exitosamente' });
+      const rowCount = checkResults[0].count;
+
+      if (rowCount === 0) {
+        return res.status(404).json({ error: 'La evaluación no existe' });
+      }
+
+      // Continuar con la inserción de la evidencia
+      const insertQuery = 'INSERT INTO EVIDENCIA_ACTIVIDAD (IEVA_ID, EVI_TIPO, EVI_CONTENIDO) VALUES (?, ?, ?)';
+      pool.query(insertQuery, [ieva_id, esBinario ? 1 : 0, archivo.filename], (insertError) => {
+        if (insertError) {
+          return handleErrors(res, insertError);
+        }
+
+        res.json({ message: 'Archivo subido exitosamente' });
+      });
     });
   });
+
 
   router.get('/evidencias/descargar/:ieva_id', authMiddleware.verifyToken, (req, res) => {
     const { ieva_id } = req.params;
