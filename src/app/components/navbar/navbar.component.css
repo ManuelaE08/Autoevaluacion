@@ -1,3 +1,9 @@
-.btn-group-vertical button{
+.container i{
+    font-size: 100px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+.nav li{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

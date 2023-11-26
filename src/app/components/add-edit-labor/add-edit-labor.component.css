@@ -3,4 +3,25 @@
     margin-block: 20px;
     display: flex;
     justify-content: space-between;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.card-header{
+    background-color: rgb(74, 141, 241);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+}
+.card-body{
+    background-color: white;
+    color: rgb(74, 141, 241);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+.col button{
+    background-color: rgb(74, 141, 241);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+.navbar a{
+    margin-left: 80px;
 }
