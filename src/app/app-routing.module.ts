@@ -7,7 +7,6 @@ import { ItemRemoveComponent } from './item-remove/item-remove.component';
 import { LoginComponent } from './login/login.component';
 import { ListLaborComponent } from './components/list-labor/list-labor.component';
 import { AddEditLaborComponent } from './components/add-edit-labor/add-edit-labor.component';
-
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListAutoevaluacionComponent } from './components/list-autoevaluacion/list-autoevaluacion.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
