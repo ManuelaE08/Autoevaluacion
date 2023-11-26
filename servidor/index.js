@@ -10,6 +10,10 @@ const laborController = require('./laborController');
 const mysql = require('mysql');
 const cors = require('cors');
 const AuthMiddleware = require('./authMiddleware');
+//Usuarios
+const userController = require('./userController');
+const rolController = require('./rolController');
+const usuRolController = require('./usuRolController');
 
 const app = express();
 
