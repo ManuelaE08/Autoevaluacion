@@ -65,6 +65,8 @@ module.exports = (pool) => {
     });
   });
 
+
+
   // Actualizar item
   router.put('/editar/:ieva_id', authMiddleware.verifyToken, authMiddleware.checkRole(['decano']), (req, res) => {
     const { ieva_id } = req.params;

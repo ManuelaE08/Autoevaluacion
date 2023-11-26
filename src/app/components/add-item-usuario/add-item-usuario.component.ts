@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Labor } from 'src/app/interfaces/labor';
+import { ItemService } from 'src/app/services/item.service';
 import { LaborService } from 'src/app/services/labor.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class AddItemUsuarioComponent implements OnInit {
   id_usuario: number;
   listLabores: Labor[] = []
   constructor(private _laborService: LaborService,
+    private _itemService: ItemService,
     private router :Router,
     private aRouter: ActivatedRoute
     ){
@@ -39,5 +41,13 @@ export class AddItemUsuarioComponent implements OnInit {
       });
     }
     return resultado;
+  }
+
+
+  agregarItem(idUser: number, idLab: number){
+    //Tenemos el id del usuario y el id de la labor
+    this._laborService.saveItem(idUser,idLab).subscribe(()=> {
+      console.log('Item Agregado');
+    });
   }
 }

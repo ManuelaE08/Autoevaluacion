@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // Rutas para items
-app.use('/items', authMiddleware.verifyToken, itemController(pool));
+app.use('/items', itemController(pool));
 
 // Ruta para el inicio de sesión
 app.use('/auth', authController);

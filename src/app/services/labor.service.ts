@@ -56,6 +56,21 @@ export class LaborService {
     }
    }
 
+   saveItem(idUser: number, idLab:number): Observable<void>{
+    const token = localStorage.getItem('token');
+    if(!token){
+      return throwError('Token not provided!');
+    }else{
+      const headers = new HttpHeaders({ Authorization: token });  
+      return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}agregarItem`,{idUser,idLab},{headers}).pipe(
+        catchError((error: any) => {
+          console.error('Error en la solicitud para agregar un ítem:', error);
+          return throwError('Error in token: ' + error.message);
+        })
+      );
+    }
+   }
+
    getLabor(id:number): Observable<Labor>{
     return this.http.get<Labor>(`${this.myAppUrl}${this.myApiUrl}id/${id}`);
    }

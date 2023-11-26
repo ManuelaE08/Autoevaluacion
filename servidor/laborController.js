@@ -47,6 +47,45 @@ module.exports = (conexion) => {
         });
     });
 
+    //Agregar item con el id de la labor y el usuario
+    router.post('/agregarItem', authMiddleware.verifyToken, authMiddleware.checkRole(['decano']), (req, res) => {
+        const userRole = req.user ? req.user.rol : null;
+        console.log(`Usuario logeado con rol: ${userRole}`);
+        
+        // Recuperamos el id de la autoevaluación del usuario 
+        const queryIdEvaluacion = 'SELECT eva_id FROM evaluacion WHERE usr_identificacion = 1';
+        const queryIdRolUser = 'select rol_id from userol where USR_IDENTIFICACION = 1';
+        let idAutoevaluacion;
+        let idUser = req.body.idUser;
+        let idLab = req.body.idLab;
+    
+        conexion.query(queryIdEvaluacion, (error, result) => {
+            if (error) {
+                console.error('Error en la consulta');
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
+    
+            if (result && result.length > 0) {
+                idAutoevaluacion = result[0].eva_id;
+                // Realizamos la inserción en la base de datos
+                const query = `INSERT INTO item_evaluacion (lab_id, eva_id, ieva_acto, ieva_estado, ieva_puntaje) 
+                               VALUES (${idLab}, ${idAutoevaluacion},0,'',0);`;
+    
+                conexion.query(query, (insertError) => {
+                    if (insertError) {
+                        console.error(insertError.message);
+                        return res.status(500).json({ error: 'Internal Server Error, Error al ingresar el item de evaluacion' });
+                    }
+                    res.json('Labor agregada');
+                });
+            } else {
+                console.log('No se encontró autoevaluación');
+                res.status(404).json({ error: 'No se encontró autoevaluación' });
+            }
+        });
+    });
+    
+
     //actualizar labor
     router.put('/editar/:id', (req,res) => {
         const {id} = req.params;

@@ -14,9 +14,11 @@
     <tbody>
     <tr *ngFor=" let labor of listLabores" class="table-active">
         <td>{{labor.id}}</td>
-        <td>{{labor.idTipoLabor}}</td>
         <td>{{labor.nombre}}</td>
         <td>{{labor.horas}}</td>
+        <td>
+            <button type="submit" (click)="agregarItem(this.id_usuario!, labor.id!)" routerLink="/autoevaluacion/item/{{this.id_usuario}}" >Agregar Item</button>
+        </td>
     </tr>
     </tbody>
 </table>
