@@ -1,0 +1,54 @@
+
+<div class="row mt-1" style="color: #800000;">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card border-primary mb-3" style="max-width: 25rem;">
+            <div class="card-header text-center" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> {{operacion}} Docente</font></font></div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addUsuario()" >
+                    <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre">
+                    <span *ngIf="form.get('nombre')?.hasError('required') && form.get('nombre')?.touched">
+                        El campo nombre es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="apellido" type="text" class="form-control mt-2" placeholder="Apellido">
+                    <span *ngIf="form.get('apellido')?.hasError('required') && form.get('apellido')?.touched">
+                        El campo apellido es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="id" type="number" class="form-control mt-2" placeholder="Id">
+                    <span *ngIf="form.get('id')?.hasError('required') && form.get('id')?.touched">
+                        El campo id es <strong>requerido</strong>
+                    </span>
+                    <label for="genero">Genero:</label>
+                        <select formControlName="genero" id="genero" class="form-control mt-2">
+                            <option *ngFor="let genero of listGeneros">{{genero}}</option>
+                        </select>
+                    <span *ngIf="form.get('genero')?.hasError('required') && form.get('genero')?.touched">
+                        El campo genero es <strong>requerido</strong>
+                    </span>
+                    <label for="tipoDocentes">Tipo Docente:</label>
+                    <select formControlName="tipoDocentes" id="tipoDocentes" class="form-control mt-2">
+                      <option *ngFor="let item of listRoles">{{item.tipo}}</option>
+                    </select>
+                    <span *ngIf="form.get('tipoDocentes')?.hasError('required') && form.get('tipoDocentes')?.touched">
+                        El campo tipo docente es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="correo" type="email" class="form-control mt-2" placeholder="Correo">
+                    <span *ngIf="form.get('correo')?.hasError('required') && form.get('correo')?.touched && form.get('correo')?.hasError('email')">
+                        El campo correo es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="ultTituloAlcanzado" type="text" class="form-control mt-2" placeholder="Ultimo Titulo Alcanzado">
+                    <span *ngIf="form.get('ultTituloAlcanzado')?.hasError('required') && form.get('ultTituloAlcanzado')?.touched">
+                        El ultimo titulo alcanzado es <strong>requerido</strong>
+                    </span>
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-6">
+                            <button type="submit" class="btn btn-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guardar</font></font></button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button routerLink="/inicio" type="button" class="btn btn-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancelar</font></font></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
