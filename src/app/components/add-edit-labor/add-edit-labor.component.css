@@ -6,22 +6,29 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .card-header{
-    background-color: rgb(74, 141, 241);
+    background-color:darkred;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 30px;
 }
 .card-body{
     background-color: white;
-    color: rgb(74, 141, 241);
+    color: darkred;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
 }
 .col button{
-    background-color: rgb(74, 141, 241);
+    background-color: darkred;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
 }
+.navbar{
+    background-color: darkred;
+}
 .navbar a{
     margin-left: 80px;
+}
+.card-body input{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
 }

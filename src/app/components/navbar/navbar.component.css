@@ -1,6 +1,11 @@
 .navbar{
     background-color: darkred;
 }
+.navbar i{
+    background-color: darkred;
+    font-size: 25px;
+    color: white;
+}
 .container i{
     font-size: 150px;
     margin-top: 20px;
@@ -10,11 +15,11 @@
 }
 .tab{
     margin-bottom: 5px;
-    background-color: darkred;
+    background-color: white;
 }
 .tab a{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
+    color: darkred;
     font-size: 17px;
 }
 
