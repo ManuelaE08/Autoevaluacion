@@ -95,6 +95,8 @@ export class AddEditLaborComponent implements OnInit{
   addLabor(){
     console.log(this.formLabor.value.tipLabId);
     
+    
+    
     const labor: Labor = {
       idTipoLabor: this.formLabor.value.tipLabId ,
       nombre: this.formLabor.value.nombreLab,
@@ -106,14 +108,14 @@ export class AddEditLaborComponent implements OnInit{
       this._laborService.updateLabor(labor).subscribe(()=>{
         console.log('labor update');
         this.router.navigate(['/labor']);
-        swal.fire('Se editó la labor '+ labor.nombre+ ' con éxito', this.alerta, 'success');
+        swal.fire('Se editó  '+ labor.nombre+ ' con éxito', this.alerta, 'success');
       })
     }else{
       //AGregar
       this._laborService.saveLabor(labor).subscribe(() => {
         console.log('labor agregada');
         this.router.navigate(['/labor']);
-        swal.fire('Se registró la labor '+ labor.nombre+ ' con éxito', this.alerta, 'success');
+        swal.fire('Se registró '+ labor.nombre+ ' con éxito', this.alerta, 'success');
       })
     }
     
