@@ -11,7 +11,7 @@
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.title button{
+.container-fluid button{
     background-color: rgb(74, 141, 241);
     color: white;
 }

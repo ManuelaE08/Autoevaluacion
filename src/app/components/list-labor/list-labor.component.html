@@ -2,14 +2,12 @@
 <div class="container">
     <app-navbar></app-navbar>
 
-    <div class="infoUser">
-      <i class="fa-regular fa-user"></i>
-    </div>
-
-    <div class="title">
-        <h4>Lista Labores</h4>
-        <button type="button" class="btn btn-secondary" routerLink="/labor/add">Agregar Labor</button>
-    </div>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">Lista Labores</a>
+            <button type="button" class="btn btn-secondary" routerLink="/labor/add">Agregar Labor</button>
+        </div>
+    </nav>
 
     <table class="table table-hover">
         <thead>
@@ -18,7 +16,7 @@
             <th scope="col">Tipo Labor</th>
             <th scope="col">Nombre</th>
             <th scope="col">Cantidad Horas</th>
-            <th scope=""></th>
+            <th scope="col">Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -29,7 +27,7 @@
             <td>{{labor.horas}}</td>
             <td>
                 <button routerLink="/labor/edit/{{labor.id}}" type="button" class="btn btn-primary btn-sm ms-2">Editar</button>
-                <button (click)="deleteLabor(labor.id!)" type="button" class="btn btn-danger btn-sm">Eliminar</button>
+                <button (click)="deleteLabor(labor.id!)" (click)="alertaS()" type="button" class="btn btn-danger btn-sm">Eliminar</button>
             </td>
         </tr>
         </tbody>

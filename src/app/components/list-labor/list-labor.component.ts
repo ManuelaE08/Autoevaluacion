@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Labor } from 'src/app/interfaces/labor';
 import { LaborService } from 'src/app/services/labor.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-labor',
@@ -8,11 +9,16 @@ import { LaborService } from 'src/app/services/labor.service';
   styleUrls: ['./list-labor.component.css']
 })
 export class ListLaborComponent implements OnInit {
+  alerta:string='';
   listLabores: Labor[] = []
   constructor(private _laborService: LaborService){}
 
   ngOnInit(): void {
     this.getListLabores();
+  }
+
+  alertaS(){
+    swal.fire('Se eliminó labor',this.alerta ,'success');
   }
 
   getListLabores(){

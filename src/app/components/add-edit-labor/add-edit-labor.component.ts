@@ -4,6 +4,9 @@ import { Labor } from 'src/app/interfaces/labor';
 import { LaborService } from 'src/app/services/labor.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TipoLabor } from 'src/app/interfaces/tipoLabor';
+import swal from 'sweetalert2';
+
+// or via CommonJS
 
 @Component({
   selector: 'app-add-edit-labor',
@@ -11,6 +14,8 @@ import { TipoLabor } from 'src/app/interfaces/tipoLabor';
   styleUrls: ['./add-edit-labor.component.css']
 })
 export class AddEditLaborComponent implements OnInit{
+
+  alerta:string='';
   tipoLabor: TipoLabor[] = [{
     id: 1,
     codigo: 'D',
@@ -101,12 +106,14 @@ export class AddEditLaborComponent implements OnInit{
       this._laborService.updateLabor(labor).subscribe(()=>{
         console.log('labor update');
         this.router.navigate(['/labor']);
+        swal.fire('Se editó la labor '+ labor.nombre+ ' con éxito', this.alerta, 'success');
       })
     }else{
       //AGregar
       this._laborService.saveLabor(labor).subscribe(() => {
         console.log('labor agregada');
         this.router.navigate(['/labor']);
+        swal.fire('Se registró la labor '+ labor.nombre+ ' con éxito', this.alerta, 'success');
       })
     }
     

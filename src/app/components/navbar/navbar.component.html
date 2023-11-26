@@ -1,21 +1,24 @@
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Gestión de Autoevaluaciones Universidad del Cauca</a>
+    <a class="navbar-brand">Gestión de Autoevaluaciones Universidad del Cauca</a>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Logo_de_la_Universidad_del_Cauca.svg/80px-Logo_de_la_Universidad_del_Cauca.svg.png" alt="Universidad del Cauca" class="university-logo">
   </div>
 </nav>
 
-<div class="infoUser">
-  
-
+<div class="container">
+  <i class="fa-regular fa-user"></i>
 </div>
 
-<div class="btn-group" role="group" aria-label="Basic radio toggle button group" bis_skin_checked="1">
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked="">
-  <label routerLink="/inicio" class="btn btn-outline-primary" for="btnradio1">Gestión Usuarios</label>
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked="">
-  <label routerLink="/labor" class="btn btn-outline-primary" for="btnradio2">Gestión Labor</label>
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked="">
-  <label routerLink="/autoevaluacion" class="btn btn-outline-primary" for="btnradio3">Gestión Autoevaluación</label>
-</div>
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" routerLink="/inicio">Gestión Usuarios</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/labor">Gestión Labor</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/autoevaluacion">Gestión Autoevaluación</a>
+  </li>
+</ul>
+
 
