@@ -1,10 +1,39 @@
 <app-navbar></app-navbar>
-<h4>mostrar info de los Usuarios a los que se les puede realizar la autoevaluacion</h4>
 
-
-En HTML, puedes incluir comentarios para agregar notas o aclaraciones dentro del código que no se mostrarán en la página web. Los comentarios son útiles para dejar instrucciones para ti mismo o para otros desarrolladores que trabajen en el mismo código. Los comentarios en HTML se escriben entre <!-- y -->. Aquí tienes algunos ejemplos:
-
-html
-Copy code
-<!-- Donde aparece el 1 se agrega el id de docente -->
-<button routerLink="/autoevaluacion/{{1}}" type="button" class="btn btn-primary btn-sm ms-2">agregar</button>
+<nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand">Información de Usuarios a los que se les puede realizar la autoevaluacion</a>
+    </div>
+</nav>
+<div class="container">
+    <table *ngIf="listDocentes.length > 0" class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apellido</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo Documento</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Id</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo Docente</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Correo Institucional</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Último Título Alcanzado</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Acciones</font></font></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let docente of listDocentes">
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.nombre}}</font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.apellido}}</font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> CC </font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.id}}</font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{this.obtenerRolDeUsuario(docente.id)}}</font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.correo}}</font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.estudio}}</font></font></td>
+            <th>
+                <!-- Donde aparece el 1 se agrega el id de docente -->
+                <button routerLink="/autoevaluacion/{{docente.id}}" type="button" class="btn btn-primary btn-sm ms-2">agregar</button>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+    <h5 *ngIf="listDocentes.length == 0" class="text-center">No hay docentes registrados</h5>
+</div>

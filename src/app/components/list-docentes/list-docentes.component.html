@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<div class="container " style="color: #800000;">
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">Lista de Usuarios</a>
+            <button type="button" class="btn btn-secondary" routerLink="/users/add/">Agregar Usuario</button>
+        </div>
+      </nav>
+    <table *ngIf="listDocentes.length > 0" class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apellido</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo Id</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Id</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo Docente</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Correo Institucional</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ultimo Titulo Alcanzado</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Acciones</font></font></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let docente of listDocentes">
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.nombre}}</font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.apellido}}</font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> CC </font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.id}}</font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{this.obtenerRolDeUsuario(docente.id)}}</font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.correo}}</font></font></td>
+            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.estudio}}</font></font></td>
+            <th>
+                <button routerLink="/users/edit/{{docente.id}}" type="button" class="btn btn-primary btn-sm">
+                    <i class="bi bi-pencil-fill"></i> Editar
+                </button>
+                <button (click)="deleteDocente(docente.id)" type="button" class="btn btn-danger btn-sm ms-2">
+                    <i class="bi bi-trash-fill"></i> Eliminar
+                </button>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+    <h5 *ngIf="listDocentes.length == 0" class="text-center">No hay docentes registrados</h5>
+</div>

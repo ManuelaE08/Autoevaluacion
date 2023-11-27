@@ -1,10 +1,11 @@
 <app-navbar></app-navbar>
-<h4>Lista de Items de Autoevaluación</h4>
 
-<button routerLink="/autoevaluacion/item/add/{{this.id_usuario}}" type="button" class="btn btn-primary btn-sm ms-2">
-  Agregar labor a docente
-</button>
-
+<nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+  <div class="container-fluid">
+      <a class="navbar-brand">Lista de Items de Autoevaluación</a>
+      <button type="button" class="btn btn-secondary" routerLink="/autoevaluacion/item/add/{{this.id_usuario}}">Agregar Labor a Docente</button>
+  </div>
+</nav>
 <!-- Mostrar la lista de items -->
 <div *ngIf="items && items.length > 0">
   <table class="table">

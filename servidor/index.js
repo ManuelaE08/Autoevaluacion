@@ -10,6 +10,10 @@ const laborController = require('./laborController');
 const mysql = require('mysql');
 const cors = require('cors');
 const AuthMiddleware = require('./authMiddleware');
+//Usuarios
+const userController = require('./userController');
+const rolController = require('./rolController');
+const usuRolController = require('./usuRolController');
 
 const app = express();
 
@@ -45,6 +49,14 @@ app.use('/labor', laborController(pool));
 app.use('/autoevaluacion/:id', evidenciaController(pool));
 
 
+// Rutas para users
+app.use('/user', authMiddleware.verifyToken, userController(pool));
+
+//Rutas para roles
+app.use('/rol', authMiddleware.verifyToken, rolController(pool));
+
+//Rutas para usu-roles
+app.use('/usu-rol', authMiddleware.verifyToken, usuRolController(pool));
 // Mensaje error general
 app.use((err, req, res, next) => {
   console.error(err.stack);

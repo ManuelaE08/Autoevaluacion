@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +20,11 @@ import { ListAutoevaluacionComponent } from './components/list-autoevaluacion/li
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { AddItemUsuarioComponent } from './components/add-item-usuario/add-item-usuario.component';
 
+import { ToastrModule } from 'ngx-toastr';
+import { AddEditUsuarioComponent } from './components/add-edit-usuario/add-edit-usuario.component';
+import { ListDocentesComponent } from './components/list-docentes/list-docentes.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,13 +39,22 @@ import { AddItemUsuarioComponent } from './components/add-item-usuario/add-item-
     ListAutoevaluacionComponent,
     ListItemComponent,
     AddItemUsuarioComponent,
+    AddEditUsuarioComponent,
+    ListDocentesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

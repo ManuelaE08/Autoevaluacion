@@ -12,7 +12,6 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(90deg, #1140d7, #88a1f1);
 }
 
 .screen {
@@ -20,7 +19,7 @@
   height: 600px;
   width: 80vw;
   max-width: 360px;
-  box-shadow: 0px 0px 24px #5C5696;
+  box-shadow: 0px 0px 24px #965656;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,7 +50,6 @@
   bottom: 0;
   z-index: 0;
   clip-path: inset(0 0 0 0);
-  background: url('https://images.pexels.com/photos/281260/pexels-photo-281260.jpeg?cs=srgb&dl=pexels-francesco-ungaro-281260.jpg&fm=jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -63,7 +61,7 @@
 .screen__background__shape1 {
   height: 520px;
   width: 520px;
-  background: #D6E7F9;
+  background: #f9d6d6;
   top: -50px;
   right: 120px;
   border-radius: 0 72px 0 0;
@@ -72,7 +70,7 @@
 .screen__background__shape2 {
   height: 220px;
   width: 220px;
-  background: #A4C3E1;
+  background: #e1a4a4;
   top: -172px;
   right: 0;
   border-radius: 32px;
@@ -81,7 +79,7 @@
 .screen__background__shape3 {
   height: 540px;
   width: 190px;
-  background: linear-gradient(270deg, #789AB5, #A0B8CE);
+  background: linear-gradient(270deg, #b57878, #cea0a0);
   top: -24px;
   right: 0;
   border-radius: 32px;
@@ -90,7 +88,7 @@
 .screen__background__shape4 {
   height: 400px;
   width: 200px;
-  background: #AFCAE8;
+  background: #e8b0af;
   top: 420px;
   right: 50px;
   border-radius: 60px;
@@ -115,12 +113,12 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  color: #3D4F6F;
+  color: #6f3d3d;
 }
 
 .login__input {
   border: none;
-  border-bottom: 2px solid #7387A7;
+  border-bottom: 2px solid #a77373;
   background: none;
   padding: 10px;
   padding-left: 24px;
@@ -133,23 +131,23 @@
   .login__input:focus,
   .login__input:hover {
     outline: none;
-    border-bottom-color: #556D8D;
+    border-bottom-color: #8d5555;
   }
 
 .login__submit {
-  background: #E2EEF9;
+  background: #f9e2e2;
   font-size: 14px;
   margin-top: 30px;
   padding: 16px 20px;
   border-radius: 26px;
-  border: 1px solid #A3C5E0;
+  border: 1px solid #e0a3a3;
   text-transform: uppercase;
   font-weight: 700;
   display: flex;
   align-items: center;
   width: 100%;
-  color: #3D4F6F;
-  box-shadow: 0px 2px 2px #5C5696;
+  color: #6f3d3d;
+  box-shadow: 0px 2px 2px #965656;
   cursor: pointer;
   transition: .2s;
 }
@@ -157,14 +155,14 @@
   .login__submit:active,
   .login__submit:focus,
   .login__submit:hover {
-    border-color: #556D8D;
+    border-color: #8d5555;
     outline: none;
   }
 
 .button__icon {
   font-size: 24px;
   margin-left: auto;
-  color: #3D4F6F;
+  color: #6f3d3d;
 }
 
 .error-message {
