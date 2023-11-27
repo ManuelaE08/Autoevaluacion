@@ -94,8 +94,7 @@ export class AddEditLaborComponent implements OnInit{
 
   addLabor(){
     console.log(this.formLabor.value.tipLabId);
-    
-    
+
     
     const labor: Labor = {
       idTipoLabor: this.formLabor.value.tipLabId ,

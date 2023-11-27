@@ -7,6 +7,7 @@
 .container-fluid button{
     background-color: darkred;
     color: white;
+    border-color: white;
 }
 .navbar{
     background-color: darkred;

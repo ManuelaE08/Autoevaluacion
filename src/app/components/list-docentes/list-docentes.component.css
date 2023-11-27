@@ -1,0 +1,14 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container-fluid a{
+    font-size: 25px;
+}
+.container-fluid button{
+    background-color: darkred;
+    color: white;
+    border-color: white;
+}
+.navbar{
+    background-color: darkred;
+}

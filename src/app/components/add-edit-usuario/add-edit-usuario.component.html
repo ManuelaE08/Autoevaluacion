@@ -1,8 +1,7 @@
-
 <div class="row mt-1" style="color: #800000;">
     <div class="col-lg-4 offset-lg-4">
         <div class="card border-primary mb-3" style="max-width: 25rem;">
-            <div class="card-header text-center" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> {{operacion}} Docente</font></font></div>
+            <div class="card-header text-center" ><font style="vertical-align: inherit;"> {{operacion}} Docente</font></div>
             <div class="card-body">
                 <form [formGroup]="form" (ngSubmit)="addUsuario()" >
                     <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre">

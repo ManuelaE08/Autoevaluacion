@@ -1,8 +1,11 @@
 <app-navbar></app-navbar>
 <div class="container " style="color: #800000;">
-    <div class="title">
-        <button type="button-primary" class="btn btn-outline-primary" routerLink="/users/add/" ><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agregar Usuario</font></font></button>
-    </div>
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">Lista de Usuarios</a>
+            <button type="button" class="btn btn-secondary" routerLink="/users/add/">Agregar Usuario</button>
+        </div>
+      </nav>
     <table *ngIf="listDocentes.length > 0" class="table table-hover">
         <thead>
         <tr>
@@ -26,11 +29,11 @@
             <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.correo}}</font></font></td>
             <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{docente.estudio}}</font></font></td>
             <th>
-                <button routerLink="/users/edit/{{docente.id}}" type="button" class="btn btn-info btn-sm">
-                    <i class="bi bi-pencil-fill"></i> Edit
+                <button routerLink="/users/edit/{{docente.id}}" type="button" class="btn btn-primary btn-sm">
+                    <i class="bi bi-pencil-fill"></i> Editar
                 </button>
-                <button (click)="deleteDocente(docente.id)" type="button" class="btn btn-secondary btn-sm ms-2">
-                    <i class="bi bi-trash-fill"></i> Delete
+                <button (click)="deleteDocente(docente.id)" type="button" class="btn btn-danger btn-sm ms-2">
+                    <i class="bi bi-trash-fill"></i> Eliminar
                 </button>
             </th>
         </tr>
