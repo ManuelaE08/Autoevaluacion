@@ -53,11 +53,13 @@ module.exports = (conexion) => {
         console.log(`Usuario logeado con rol: ${userRole}`);
         
         // Recuperamos el id de la autoevaluación del usuario 
-        const queryIdEvaluacion = 'SELECT eva_id FROM evaluacion WHERE usr_identificacion = 1';
-        const queryIdRolUser = 'select rol_id from userol where USR_IDENTIFICACION = 1';
+
         let idAutoevaluacion;
         let idUser = req.body.idUser;
         let idLab = req.body.idLab;
+
+        const queryIdEvaluacion = `SELECT eva_id FROM evaluacion WHERE usr_identificacion = ${idUser} `;
+        const queryIdRolUser = `select rol_id from userol where USR_IDENTIFICACION= ${idUser}`;
     
         conexion.query(queryIdEvaluacion, (error, result) => {
             if (error) {

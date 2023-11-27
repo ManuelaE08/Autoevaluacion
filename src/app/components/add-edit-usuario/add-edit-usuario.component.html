@@ -26,7 +26,7 @@
                     </span>
                     <label for="tipoDocentes">Tipo Docente:</label>
                     <select formControlName="tipoDocentes" id="tipoDocentes" class="form-control mt-2">
-                      <option *ngFor="let item of listRoles">{{item.tipo}}</option>
+                      <option *ngFor="let item of listRoles">{{item.descripcion}}</option>
                     </select>
                     <span *ngIf="form.get('tipoDocentes')?.hasError('required') && form.get('tipoDocentes')?.touched">
                         El campo tipo docente es <strong>requerido</strong>
