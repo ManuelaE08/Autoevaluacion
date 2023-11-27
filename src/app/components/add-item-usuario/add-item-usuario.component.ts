@@ -17,7 +17,7 @@ export class AddItemUsuarioComponent implements OnInit {
     private router :Router,
     private aRouter: ActivatedRoute
     ){
-    this.id_usuario = Number(aRouter.snapshot.paramMap.get('id'));
+    this.id_usuario = Number(aRouter.snapshot.paramMap.get('uid'));
     console.log('id usuario para añadir item',this.id_usuario);
   }
 
