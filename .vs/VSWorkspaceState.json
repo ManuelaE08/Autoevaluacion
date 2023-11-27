@@ -1,12 +1,18 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.angular",
     "\\servidor",
-    "\\servidor\\models",
+    "\\servidor\\ruta",
+    "\\servidor\\ruta\\al",
     "\\src",
-    "\\src\\app"
+    "\\src\\app",
+    "\\src\\app\\components",
+    "\\src\\app\\components\\edit-item",
+    "\\src\\app\\components\\list-item",
+    "\\src\\app\\services",
+    "\\src\\assets",
+    "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\app\\item-list",
+  "SelectedNode": "\\servidor\\itemController.js",
   "PreviewInSolutionExplorer": false
 }

@@ -82,7 +82,7 @@ export class ItemService {
       return this.http.put(`${API_URL}/editar/${id}`, item, { headers }).pipe(
         catchError((error: any) => {
           console.error('Error en la solicitud para editar un ítem:', error);
-          return throwError('Error in token: ' + error.message);
+          return throwError(error);
         })
       );
     }

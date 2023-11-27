@@ -26,6 +26,14 @@ export class AuthService {
     );
   }
 
+  logout(): void {
+    // Eliminar token y rol al realizar logout
+    localStorage.removeItem('token');
+    localStorage.removeItem('rol');
+    // Redirigir al usuario a la página de inicio de sesión
+    this.router.navigate(['/login']);
+  }
+
   getToken(): string | null {
     return localStorage.getItem('token');
   }

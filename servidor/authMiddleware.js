@@ -1,13 +1,14 @@
 const jwt = require('jsonwebtoken');
 
 class AuthMiddleware {
-  constructor(secretKey) {
+  constructor(secretKey, authService) {
     this.secretKey = secretKey;
+    this.authService = authService;
     this.verifyToken = this.verifyToken.bind(this);
     this.revokedTokens = new Set();
   }
 
-  verifyToken(req, res, next) {
+  async verifyToken(req, res, next) {
     const token = req.headers['authorization'];
 
     if (!token) {
@@ -28,7 +29,7 @@ class AuthMiddleware {
         return res.status(403).json({ message: 'Token inválido' });
       }
 
-      console.log('Decodificado:', decoded);
+      //console.log('Decodificado:', decoded);
 
       if (!decoded.rol) {
         return res.status(403).json({ message: 'Token inválido: Falta rol' });
@@ -37,10 +38,6 @@ class AuthMiddleware {
       req.user = decoded;
       next();
     });
-  }
-
-  revokeToken(token) {
-    this.revokedTokens.add(token);
   }
 
   checkRole(allowedRoles) {

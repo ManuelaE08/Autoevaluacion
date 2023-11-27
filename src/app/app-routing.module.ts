@@ -13,7 +13,7 @@ import { ListItemComponent } from './components/list-item/list-item.component';
 import { AddItemUsuarioComponent } from './components/add-item-usuario/add-item-usuario.component';
 import { ListDocentesComponent } from './components/list-docentes/list-docentes.component';
 import { AddEditUsuarioComponent } from './components/add-edit-usuario/add-edit-usuario.component';
-
+import { EditItemComponent } from './components/edit-item/edit-item.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -27,7 +27,8 @@ const routes: Routes = [
   { path: 'labor/edit/:id', component: AddEditLaborComponent},
   { path: 'autoevaluacion', component: ListAutoevaluacionComponent},
   { path: 'autoevaluacion/:uid', component: ListItemComponent},
-  { path: 'autoevaluacion/:uid/item/add', component: AddItemUsuarioComponent},
+  { path: 'autoevaluacion/:uid/item/add', component: AddItemUsuarioComponent },
+  { path: 'autoevaluacion/:id_usuario/item/editar/:ieva_id', component: EditItemComponent },
   { path: '**', redirectTo: '/items' },
 ];
 

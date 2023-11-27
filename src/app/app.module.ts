@@ -19,10 +19,13 @@ import { AddEditLaborComponent } from './components/add-edit-labor/add-edit-labo
 import { ListAutoevaluacionComponent } from './components/list-autoevaluacion/list-autoevaluacion.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { AddItemUsuarioComponent } from './components/add-item-usuario/add-item-usuario.component';
+import { EditItemComponent } from './components/edit-item/edit-item.component';
+
 
 import { ToastrModule } from 'ngx-toastr';
 import { AddEditUsuarioComponent } from './components/add-edit-usuario/add-edit-usuario.component';
 import { ListDocentesComponent } from './components/list-docentes/list-docentes.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -40,7 +43,8 @@ import { ListDocentesComponent } from './components/list-docentes/list-docentes.
     ListItemComponent,
     AddItemUsuarioComponent,
     AddEditUsuarioComponent,
-    ListDocentesComponent
+    ListDocentesComponent,
+    EditItemComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,13 @@ import { ListDocentesComponent } from './components/list-docentes/list-docentes.
     FormsModule,
     CommonModule,
     BrowserAnimationsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+      },
+    }),
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-right',
