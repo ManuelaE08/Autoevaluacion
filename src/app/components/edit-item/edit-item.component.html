@@ -1,0 +1,64 @@
+<div class="container mt-4">
+  <h2 class="black-text">Editar Item de Autoevaluación</h2>
+
+  <form (ngSubmit)="guardarCambios()" #itemForm="ngForm">
+
+    <div class="mb-3">
+      <label for="labNombre" class="form-label black-text">Nombre de Labor</label>
+      <input type="text" class="form-control black-text" id="labNombre" [(ngModel)]="item.LAB_NOMBRE" name="LAB_NOMBRE"
+             [disabled]="!canEditField('LAB_NOMBRE')" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="labTipo" class="form-label black-text">Tipo de Labor</label>
+      <input type="text" class="form-control black-text" id="labTipo" [(ngModel)]="item.TIPO_LABOR" name="TIPO_LABOR"
+             [disabled]="!canEditField('TIPO_LABOR')" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="labHoras" class="form-label black-text">Horas</label>
+      <input type="number" class="form-control black-text" id="labHoras" [(ngModel)]="item.LAB_HORAS" name="LAB_HORAS"
+             [disabled]="!canEditField('LAB_HORAS')" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="descripcion" class="form-label black-text">Descripción</label>
+      <textarea class="form-control black-text" id="descripcion" [(ngModel)]="item.IEVA_DESCRIPCION" name="IEVA_DESCRIPCION"
+                [disabled]="!canEditField('IEVA_DESCRIPCION')" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="acto" class="form-label black-text">Acto</label>
+      <input type="text" class="form-control black-text" id="acto" [(ngModel)]="item.IEVA_ACTO" name="IEVA_ACTO"
+             [disabled]="!canEditField('IEVA_ACTO')" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="fechaInicio" class="form-label black-text">Fecha de Inicio</label>
+      <input type="date" class="form-control black-text" id="fechaInicio" [(ngModel)]="item.IEVA_FECHA_INICIO" name="IEVA_FECHA_INICIO"
+             [disabled]="!canEditField('IEVA_FECHA_INICIO')" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="fechaFin" class="form-label black-text">Fecha de Fin</label>
+      <input type="date" class="form-control" id="fechaFin" [(ngModel)]="item.IEVA_FECHA_FIN" name="IEVA_FECHA_FIN"
+             [disabled]="!canEditField('IEVA_FECHA_FIN')" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="estado" class="form-label black-text">Estado</label>
+      <input type="text" class="form-control" id="estado" [(ngModel)]="item.IEVA_ESTADO" name="IEVA_ESTADO"
+             [disabled]="!canEditField('IEVA_ESTADO')" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="puntaje" class="form-label black-text">Puntaje</label>
+      <input type="number" class="form-control" id="puntaje" [(ngModel)]="item.IEVA_PUNTAJE" name="IEVA_PUNTAJE"
+             [disabled]="!canEditField('IEVA_PUNTAJE')" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a routerLink="/autoevaluacion/{{ item.USR_IDENTIFICACION }}" class="btn btn-secondary ms-2">Cancelar</a>
+
+  </form>
+</div>

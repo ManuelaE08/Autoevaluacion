@@ -29,7 +29,7 @@ class AuthMiddleware {
         return res.status(403).json({ message: 'Token inválido' });
       }
 
-      console.log('Decodificado:', decoded);
+      //console.log('Decodificado:', decoded);
 
       if (!decoded.rol) {
         return res.status(403).json({ message: 'Token inválido: Falta rol' });

@@ -10,6 +10,7 @@ import { ItemService } from 'src/app/services/item.service';
 export class ListItemComponent implements OnInit {
   id_usuario: number;
   items: any[] = [];
+  mostrarContenido: boolean = false;
 
   constructor(
     private router: Router,
@@ -61,8 +62,8 @@ export class ListItemComponent implements OnInit {
     if (tipo === 1) {
       this.descargarArchivo(ieva_id);
     } else if (tipo === 0) {
-      // Mostrar contenido de texto (contenido es el texto)
       console.log('Contenido de texto:', contenido);
+      this.mostrarContenido = true;
     } else {
       console.error('Tipo de evidencia no reconocido:', tipo);
     }
@@ -85,5 +86,8 @@ export class ListItemComponent implements OnInit {
     );
   }
 
+  editarItem(ieva_id: number) {
+    this.router.navigate(['/autoevaluacion', this.id_usuario, 'item', 'edit', ieva_id]);
+  }
 
 }
