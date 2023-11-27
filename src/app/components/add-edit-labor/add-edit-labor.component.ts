@@ -94,14 +94,20 @@ export class AddEditLaborComponent implements OnInit{
 
   addLabor(){
     console.log(this.formLabor.value.tipLabId);
-    
-    
-    
+      
+    let idTipoLabor: number = 0;
+
     const labor: Labor = {
-      idTipoLabor: this.formLabor.value.tipLabId ,
+      idTipoLabor,
       nombre: this.formLabor.value.nombreLab,
       horas: this.formLabor.value.horasLab
     }
+    
+    for(let i in this.tipoLabor){
+      if(this.formLabor.value.tipLabId[i].descripcion == this.tipoLabor[i].descripcion){
+        return idTipoLabor = this.tipoLabor[i].id;
+      }
+    } 
     if(this.id !== 0){
       //Editar 
       labor.id = this.id;
