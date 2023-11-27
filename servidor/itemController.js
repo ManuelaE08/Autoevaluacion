@@ -24,6 +24,8 @@ module.exports = (pool) => {
         TL.TL_DESCRIPCION AS TIPO_LABOR,
         L.LAB_HORAS,
         IE.IEVA_DESCRIPCION AS DESCRIPCION,
+        E.EVA_ID,
+        L.LAB_ID,
         IE.IEVA_ACTO,
         IE.IEVA_ESTADO,
         IE.IEVA_PUNTAJE,

@@ -11,11 +11,9 @@ class AuthService {
   async getUserByEmail(email) {
     try {
       const user = await this.userModel.findByEmail(email);
-      console.log(user);
       if (!user) {
         return null; // Usuario no encontrado
       }
-
       return user;
     } catch (error) {
       console.error('Error al obtener usuario por correo:', error);
@@ -71,18 +69,24 @@ class AuthService {
 
   verifyToken(token) {
     return new Promise((resolve, reject) => {
-      jwt.verify(token, this.secretKey, (err, decoded) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(decoded);
-        }
-      });
+      if (this.revokedTokens.has(token)) {
+        reject({ name: 'TokenRevokedError', message: 'Token ha sido revocado' });
+      } else {
+        jwt.verify(token, this.secretKey, (err, decoded) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(decoded);
+          }
+        });
+      }
     });
   }
 
   revokeToken(token) {
-    this.revokedTokens.add(token);
+    if (token) {
+      this.revokedTokens.add(token);
+    }
   }
 
   checkRole(allowedRoles) {
