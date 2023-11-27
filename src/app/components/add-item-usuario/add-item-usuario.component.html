@@ -18,10 +18,10 @@
         <td>{{labor.nombre}}</td>
         <td>{{labor.horas}}</td>
         <td>
-            <button type="submit" (click)="agregarItem(this.id_usuario!, labor.id!)" routerLink="/autoevaluacion/item/{{this.id_usuario}}" >Agregar Item</button>
+            <button type="submit" (click)="agregarItem(this.id_usuario!, labor.id!)" routerLink="/autoevaluacion/{{this.id_usuario}}" >Agregar Item</button>
         </td>
     </tr>
     </tbody>
 </table>
 
-<button routerLink="/autoevaluacion/item/{{this.id_usuario}}" class="btn btn-secondary">Cancelar</button>
+<button routerLink="/autoevaluacion/{{this.id_usuario}}" class="btn btn-secondary">Cancelar</button>
