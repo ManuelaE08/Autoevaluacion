@@ -1,15 +1,21 @@
 <app-navbar></app-navbar>
-<h4>mostrar info de los Usuarios a los que se les puede realizar la autoevaluacion</h4>
 
+<nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand">Información de Usuarios a los que se les puede realizar la autoevaluacion</a>
+    </div>
+</nav>
 <div class="container">
     <table *ngIf="listDocentes.length > 0" class="table table-hover">
         <thead>
         <tr>
             <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre</font></font></th>
             <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apellido</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo Documento</font></font></th>
             <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Id</font></font></th>
             <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo Docente</font></font></th>
             <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Correo Institucional</font></font></th>
+            <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Último Título Alcanzado</font></font></th>
             <th scope="col"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Acciones</font></font></th>
         </tr>
         </thead>

@@ -1,0 +1,16 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.card-header{
+    background-color: darkred;
+    color: white;
+    font-size: 20px;
+}
+.card-body{
+    border-color: darkred;
+}
+.row button{
+    background-color: darkred;
+    color: white;
+    border-color: darkred;
+}
